@@ -24,24 +24,34 @@ recordRoutes.route("/articles").get(function (req, res) {
         });
 });
 
-// // This section will help you get a single record by id
-// recordRoutes.route("/record/:id").get(function (req, res) {
-//     let db_connect = dbo.getDb();
-//     let myquery = { _id: ObjectId(req.params.id) };
-//     db_connect
-//         .collection("records")
-//         .findOne(myquery, function (err, result) {
-//             if (err) throw err;
-//             res.json(result);
-//         });
-// });
+// This section will help you get a single record by id
+recordRoutes.route("/articles/:id").get(function (req, res) {
+    let db_connect = dbo.getDb("speed");
+    let myquery = { _id: ObjectId(req.params.id) };
+    db_connect
+        .collection("articles")
+        .findOne(myquery, function (err, result) {
+            if (err) throw err;
+            res.json(result);
+        });
+});
 
 // This section will help you create a new record.
 recordRoutes.route("/articles").post(function (req, response) {
     let db_connect = dbo.getDb("speed");
     let myobj = {
-        title: req.body.title
+        id: Date.now().toString(),
+        title: req.body.title,
+        authors: req.body.authors,
+        journalName: req.body.journalName,
+        publicationYear: req.body.publicationYear,
+        volume: req.body.volume,
+        pages: req.body.pages,
+        doi: req.body.doi,
+        status: "Awaiting Moderation",
+        practice: req.body.practice,
     };
+
     db_connect.collection("articles").insertOne(myobj, function (err, res) {
         if (err) throw err;
         response.json(res);
@@ -61,15 +71,15 @@ recordRoutes.route("/articles").post(function (req, response) {
 //     }
 // });
 
-// // This section will help you delete a record
-// recordRoutes.route("/:id").delete((req, response) => {
-//     let db_connect = dbo.getDb();
-//     let myquery = { _id: ObjectId(req.params.id) };
-//     db_connect.collection("records").deleteOne(myquery, function (err, obj) {
-//         if (err) throw err;
-//         console.log("1 document deleted");
-//         response.json(obj);
-//     });
-// });
+// This section will help you delete a record
+recordRoutes.route("/articles/delete/:id").delete((req, response) => {
+    let db_connect = dbo.getDb("speed");
+    let myquery = { _id: ObjectId(req.params.id) };
+    db_connect.collection("articles").deleteOne(myquery, function (err, obj) {
+        if (err) throw err;
+        console.log("document deleted:" + req.params.id);
+        response.json(obj);
+    });
+});
 
 module.exports = recordRoutes;

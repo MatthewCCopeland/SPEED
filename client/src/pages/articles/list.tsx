@@ -5,10 +5,10 @@ import {
   Column,
   usePagination,
   useSortBy,
-  useFilters
+  useFilters,
 } from "@pankod/refine-react-table";
 
-import { useDelete, useNavigation, useOne } from "@pankod/refine-core";
+import { BaseKey, useDelete, useNavigation, useOne } from "@pankod/refine-core";
 
 import { IArticle } from "interfaces";
 import {
@@ -31,7 +31,7 @@ export const ArticleList: React.FC = () => {
       {
         id: "id",
         Header: "ID",
-        accessor: "id"
+        accessor: "_id"
       },
       {
         id: "title",
@@ -39,6 +39,72 @@ export const ArticleList: React.FC = () => {
         accessor: "title",
         filter: "contains"
       },
+      {
+        id: "authors",
+        Header: "Authors",
+        accessor: "authors",
+      },
+      {
+        id: "journalName",
+        Header: "Journal Name",
+        accessor: "journalName",
+      },
+      {
+        id: "publicationYear",
+        Header: "Publication Year",
+        accessor: "publicationYear",
+      },
+      {
+        id: "volume",
+        Header: "Volume",
+        accessor: "volume",
+      },
+      {
+        id: "pages",
+        Header: "Pages",
+        accessor: "pages",
+      },
+      {
+        id: "doi",
+        Header: "DOI",
+        accessor: "doi",
+      },
+      {
+        id: "practice",
+        Header: "Software Development Practice",
+        accessor: "practice",
+      },
+      {
+        id: "status",
+        Header: "Status",
+        accessor: "status",
+      },
+      {
+        id: "rating",
+        Header: "Rating",
+        accessor: "rating",
+      },
+      {
+        id: "action",
+        Header: "Action",
+        accessor: "_id",
+        Cell: ({ value }: any) => (
+          <div className="flex gap-2">
+            <button
+              className="rounded border border-gray-200 p-2 text-xs font-medium leading-tight transition duration-150 ease-in-out hover:bg-indigo-500 hover:text-white"
+              onClick={() => show("articles", value)}
+            >
+              {ShowIcon}
+            </button>
+            <button
+              className="rounded border border-gray-200 p-2 text-xs font-medium leading-tight transition duration-150 ease-in-out hover:bg-red-500 hover:text-white"
+              onClick={() => mutate({ resource: "articles/delete", id: value })}
+            >
+              {DeleteIcon}
+            </button>
+          </div>
+        )
+      }
     ],
     []
   );
@@ -73,7 +139,7 @@ export const ArticleList: React.FC = () => {
             type="text"
             className="rounded border border-gray-200 p-1 text-gray-700"
             placeholder="Filter by title"
-            value={filters.find((filter: { id: string; }) => filter.id === "title")?.value}
+            value={filters.find((filter: { title: string; }) => filter.title === "title")?.value}
             onChange={(event) => setFilter("title", event.target.value)}
           />
         </div>
