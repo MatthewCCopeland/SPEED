@@ -53,7 +53,7 @@ export const PostList: React.FC = () => {
         id: "category.id",
         Header: "Category",
         accessor: "category.id",
-        Cell: ( cell: { value: any; } ) => {
+        Cell: (cell: { value: any; }) => {
           const { data, isLoading } = useOne<ICategory>({
             resource: "categories",
             id: cell.value
@@ -87,7 +87,7 @@ export const PostList: React.FC = () => {
             </button>
             <button
               className="rounded border border-gray-200 p-2 text-xs font-medium leading-tight transition duration-150 ease-in-out hover:bg-red-500 hover:text-white"
-              onClick={() => mutate({ id: value, resource: "posts" })}
+              onClick={() => mutate({ id: value, resource: "articles" })}
             >
               {DeleteIcon}
             </button>
