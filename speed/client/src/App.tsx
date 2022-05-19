@@ -3,7 +3,7 @@ import routerProvider from "@pankod/refine-react-router-v6";
 import dataProvider from "@pankod/refine-simple-rest";
 
 import { Layout } from "components";
-import { ArticleList, ArticleCreate, ArticleShow } from "pages/articles";
+import { ArticleList, ArticleCreate, ArticleShow, ArticleEdit } from "pages/articles";
 
 const App: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const App: React.FC = () => {
           name: "articles",
           list: ArticleList,
           create: ArticleCreate,
-          //edit: ArticleEdit,
+          edit: ArticleEdit,
           show: ArticleShow,
         },
 

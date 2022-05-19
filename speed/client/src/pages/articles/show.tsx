@@ -9,13 +9,13 @@ export const ArticleShow: React.FC = () => {
 
     return (
         <div className="container mx-auto">
-            <div className="mb-6">
-                <label className="mb-2 block text-sm font-medium">ID</label>
-                <input
-                    value={record?.id}
-                    disabled
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm"
-                />
+            <div className="row">
+                <div className="col">
+
+                </div>
+                <div className="col">
+
+                </div>
             </div>
             <div className="mb-6">
                 <label className="mb-2 block text-sm font-medium">Title</label>
