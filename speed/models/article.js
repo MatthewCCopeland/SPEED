@@ -1,17 +1,17 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 let articleSchema = new Schema({
-    title: {
-        type: String
-    },
-    todo_responsible: {
-        type: String
-    },
-    todo_priority: {
-        type: String
-    },
-    todo_completed: {
-        type: Boolean
-    }
+  title: {
+    type: String,
+  },
+  todo_responsible: {
+    type: String,
+  },
+  todo_priority: {
+    type: String,
+  },
+  todo_completed: {
+    type: Boolean,
+  },
 });
-module.exports = mongoose.model('Todo', Todo);
+module.exports = mongoose.model("Todo", Todo);
