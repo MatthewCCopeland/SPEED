@@ -15,7 +15,7 @@ const App: React.FC = () => {
           name: "articles",
           list: ArticleList,
           create: ArticleCreate,
-          // edit: ArticleEdit,
+          //edit: ArticleEdit,
           show: ArticleShow,
         },
 

@@ -1,9 +1,9 @@
 const express = require("express");
 
-// recordRoutes is an instance of the express router.
+// articleRoutes is an instance of the express router.
 // We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /record.
-const recordRoutes = express.Router();
+// The router will be added as a middleware and will take control of requests starting with path /articles.
+const articleRoutes = express.Router();
 
 // This will help us connect to the database
 const dbo = require("../db/conn");
@@ -12,8 +12,8 @@ const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 
 
-// This section will help you get a list of all the records.
-recordRoutes.route("/articles").get(function (req, res) {
+// This section will help you get a list of all the articles.
+articleRoutes.route("/articles").get(function (req, res) {
     let db_connect = dbo.getDb("speed");
     db_connect
         .collection("articles")
@@ -24,10 +24,10 @@ recordRoutes.route("/articles").get(function (req, res) {
         });
 });
 
-// This section will help you get a single record by id
-recordRoutes.route("/articles/:id").get(function (req, res) {
+// This section will help you get a single article by id
+articleRoutes.route("/articles/:id").get(function (req, res) {
     let db_connect = dbo.getDb("speed");
-    let myquery = { _id: ObjectId(req.params.id) };
+    let myquery = { id: req.params.id };
     db_connect
         .collection("articles")
         .findOne(myquery, function (err, result) {
@@ -36,8 +36,8 @@ recordRoutes.route("/articles/:id").get(function (req, res) {
         });
 });
 
-// This section will help you create a new record.
-recordRoutes.route("/articles").post(function (req, response) {
+// This section will help you create a new article.
+articleRoutes.route("/articles").post(function (req, response) {
     let db_connect = dbo.getDb("speed");
     let myobj = {
         id: Date.now().toString(),
@@ -58,23 +58,21 @@ recordRoutes.route("/articles").post(function (req, response) {
     });
 });
 
-// // This section will help you update a record by id.
-// recordRoutes.route("/update/:id").post(function (req, response) {
-//     let db_connect = dbo.getDb();
-//     let myquery = { _id: ObjectId(req.params.id) };
-//     let newvalues = {
-//         $set: {
-//             name: req.body.name,
-//             position: req.body.position,
-//             level: req.body.level,
-//         },
-//     }
-// });
-
-// This section will help you delete a record
-recordRoutes.route("/articles/delete/:id").delete((req, response) => {
+// This section will help you update a article by id.
+articleRoutes.route("/articles/edit/:id").post(function (req, response) {
     let db_connect = dbo.getDb("speed");
-    let myquery = { _id: ObjectId(req.params.id) };
+    let myquery = { id: req.params.id };
+    let newvalues = {
+            title: req.body.title,
+        };
+    
+    //db_connect.collection("articles").
+});
+
+// This section will help you delete a article
+articleRoutes.route("/articles/delete/:id").delete((req, response) => {
+    let db_connect = dbo.getDb("speed");
+    let myquery = { id: req.params.id };
     db_connect.collection("articles").deleteOne(myquery, function (err, obj) {
         if (err) throw err;
         console.log("document deleted:" + req.params.id);
@@ -82,4 +80,4 @@ recordRoutes.route("/articles/delete/:id").delete((req, response) => {
     });
 });
 
-module.exports = recordRoutes;
+module.exports = articleRoutes;

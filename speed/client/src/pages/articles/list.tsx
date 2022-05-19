@@ -8,7 +8,7 @@ import {
   useFilters,
 } from "@pankod/refine-react-table";
 
-import { BaseKey, useDelete, useNavigation, useOne } from "@pankod/refine-core";
+import { useDelete, useNavigation } from "@pankod/refine-core";
 
 import { IArticle } from "interfaces";
 import {
@@ -31,43 +31,13 @@ export const ArticleList: React.FC = () => {
       {
         id: "id",
         Header: "ID",
-        accessor: "_id"
+        accessor: "id"
       },
       {
         id: "title",
         Header: "Title",
         accessor: "title",
         filter: "contains"
-      },
-      {
-        id: "authors",
-        Header: "Authors",
-        accessor: "authors",
-      },
-      {
-        id: "journalName",
-        Header: "Journal Name",
-        accessor: "journalName",
-      },
-      {
-        id: "publicationYear",
-        Header: "Publication Year",
-        accessor: "publicationYear",
-      },
-      {
-        id: "volume",
-        Header: "Volume",
-        accessor: "volume",
-      },
-      {
-        id: "pages",
-        Header: "Pages",
-        accessor: "pages",
-      },
-      {
-        id: "doi",
-        Header: "DOI",
-        accessor: "doi",
       },
       {
         id: "practice",
@@ -87,7 +57,7 @@ export const ArticleList: React.FC = () => {
       {
         id: "action",
         Header: "Action",
-        accessor: "_id",
+        accessor: "id",
         Cell: ({ value }: any) => (
           <div className="flex gap-2">
             <button
@@ -95,6 +65,12 @@ export const ArticleList: React.FC = () => {
               onClick={() => show("articles", value)}
             >
               {ShowIcon}
+            </button>
+            <button
+              className="rounded border border-gray-200 p-2 text-xs font-medium leading-tight transition duration-150 ease-in-out hover:bg-indigo-500 hover:text-white"
+              onClick={() => edit("articles", value)}
+            >
+              {EditIcon}
             </button>
             <button
               className="rounded border border-gray-200 p-2 text-xs font-medium leading-tight transition duration-150 ease-in-out hover:bg-red-500 hover:text-white"
