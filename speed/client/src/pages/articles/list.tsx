@@ -29,11 +29,6 @@ export const ArticleList: React.FC = () => {
   const columns: Array<Column> = React.useMemo(
     () => [
       {
-        id: "id",
-        Header: "ID",
-        accessor: "id"
-      },
-      {
         id: "title",
         Header: "Title",
         accessor: "title",

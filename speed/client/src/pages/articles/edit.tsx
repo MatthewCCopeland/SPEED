@@ -169,19 +169,15 @@ export const ArticleEdit: React.FC = () => {
                     >
                         Status
                     </label>
-                    <input
-                        {...register("status", { required: true })}
-                        type="text"
-                        id="status"
-                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm "
-                        placeholder="Status"
-                    />
-                    {errors.status && (
-                        <p className="mt-1 text-sm text-red-600">
-                            <span className="font-medium">Oops!</span> This
-                            field is required
-                        </p>
-                    )}
+                    <select
+                        {...register("status")}
+                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm"
+                    >
+                        <option value="Awaiting Moderation">Awaiting Moderation</option>
+                        <option value="Awaiting Analysis">Awaiting Analysis</option>
+                        <option value="Accepted">Accepted</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
                 </div>
                 <div className="mb-6">
                     <label
