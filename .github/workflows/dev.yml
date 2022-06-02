@@ -25,5 +25,5 @@ jobs:
         with:
           args: deploy --dir=build --prod
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "assignment-1b-dev"
-          heroku_email: "bxs1347@autuni.ac.nz"
+          heroku_app_name: "seeds-develop"
+          heroku_email: "mattyccopeland@gmail.com"
