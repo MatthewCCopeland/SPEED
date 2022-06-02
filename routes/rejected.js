@@ -28,7 +28,7 @@ rejectedRoutes.route("/rejected").get(function (req, res) {
     } else if (req.query.practice !== undefined) {
         db_connect
             .collection("articles")
-            .find({ "status": "Rejected", title: new RegExp(req.query.practice, 'i') })
+            .find({ "status": "Rejected", practice: new RegExp(req.query.practice, 'i') })
             .toArray(function (err, result) {
                 if (err) {
                     res.status(400).send("Error fetching listings!");

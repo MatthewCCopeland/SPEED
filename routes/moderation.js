@@ -28,7 +28,7 @@ moderationRoutes.route("/moderation").get(function (req, res) {
     } else if (req.query.practice !== undefined) {
         db_connect
             .collection("articles")
-            .find({ "status": "Awaiting Moderation", title: new RegExp(req.query.practice, 'i') })
+            .find({ "status": "Awaiting Moderation", practice: new RegExp(req.query.practice, 'i') })
             .toArray(function (err, result) {
                 if (err) {
                     res.status(400).send("Error fetching listings!");
