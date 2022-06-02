@@ -1,0 +1,5 @@
+{
+    "ATLAS_URI": "mongodb+srv://matthew:NgyR4F0suQwDRDiC@speedcluster0.9kmhp.mongodb.net/?retryWrites=true&w=majority",
+    "PORT": 5000,
+    "env": "dev"
+  }
