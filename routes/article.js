@@ -12,7 +12,7 @@ const dbo = require("../config/db");
 // const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the articles.
-articleRoutes.route("/articles").get(function (req, res) {
+articleRoutes.route("/api/articles").get(function (req, res) {
     let db_connect = dbo.getDb("speed");
     if (req.query.title_like !== undefined) {
         db_connect
@@ -51,7 +51,7 @@ articleRoutes.route("/articles").get(function (req, res) {
 });
 
 // This section will help you get a single article by id
-articleRoutes.route("/articles/:id").get(function (req, res) {
+articleRoutes.route("/api/articles/:id").get(function (req, res) {
     let db_connect = dbo.getDb();
     let myquery = { id: req.params.id };
     db_connect
@@ -66,7 +66,7 @@ articleRoutes.route("/articles/:id").get(function (req, res) {
 });
 
 // This section will help you create a new article.
-articleRoutes.route("/articles").post(function (req, response) {
+articleRoutes.route("/api/articles").post(function (req, response) {
     let db_connect = dbo.getDb("speed");
     let myobj = {
         id: Date.now().toString(),
@@ -88,7 +88,7 @@ articleRoutes.route("/articles").post(function (req, response) {
 });
 
 // This section will help you update a article by id.
-articleRoutes.route("/articles/:id").patch(function (req, response) {
+articleRoutes.route("/api/articles/:id").patch(function (req, response) {
     let db_connect = dbo.getDb();
     let myquery = { id: req.params.id };
     let newvalues = {
@@ -117,7 +117,7 @@ articleRoutes.route("/articles/:id").patch(function (req, response) {
 });
 
 // This section will help you delete a article
-articleRoutes.route("/articles/delete/:id").delete((req, response) => {
+articleRoutes.route("/api/articles/delete/:id").delete((req, response) => {
     let db_connect = dbo.getDb("speed");
     let myquery = { id: req.params.id };
     db_connect.collection("articles").deleteOne(myquery, function (err, obj) {
