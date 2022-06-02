@@ -27,7 +27,7 @@ analysisRoutes.route("/analysis").get(function (req, res) {
     } else if (req.query.practice !== undefined) {
         db_connect
             .collection("articles")
-            .find({ "status": "Awaiting Analysis", title: new RegExp(req.query.practice, 'i') })
+            .find({ "status": "Awaiting Analysis", practice: new RegExp(req.query.practice, 'i') })
             .toArray(function (err, result) {
                 if (err) {
                     res.status(400).send("Error fetching listings!");
