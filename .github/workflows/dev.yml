@@ -5,7 +5,7 @@ name: Dev Heroku
 
 on:
   push:
-    branches: [develop]
+    branches: [Develop]
 
 
 jobs:

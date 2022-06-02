@@ -49,7 +49,7 @@ export const AnalysisEdit: React.FC = () => {
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm"
                     >
                         <option value="Awaiting Analysis">Awaiting Analysis</option>
-                        <option value="Approved">Approved</option>
+                        <option value="Accepted">Accepted</option>
                         <option value="Rejected">Rejected</option>
                     </select>
                 </div>
