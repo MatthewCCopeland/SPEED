@@ -25,6 +25,17 @@ moderationRoutes.route("/moderation").get(function (req, res) {
                     res.json(result);
                 }
             });
+    } else if (req.query.practice !== undefined) {
+        db_connect
+            .collection("articles")
+            .find({ "status": "Awaiting Moderation", title: new RegExp(req.query.practice, 'i') })
+            .toArray(function (err, result) {
+                if (err) {
+                    res.status(400).send("Error fetching listings!");
+                } else {
+                    res.json(result);
+                }
+            });
     } else {
         db_connect
             .collection("articles")
