@@ -14,18 +14,29 @@ const dbo = require("../config/db");
 // This section will help you get a list of all the accpeted accepteds.
 acceptedRoutes.route("/accepted").get(function (req, res) {
     let db_connect = dbo.getDb("speed");
-    db_connect
-        .collection("articles")
-        .find({
-            "status": "Accepted",
-        })
-        .toArray(function (err, result) {
-            if (err) {
-                res.status(400).send("Error fetching listings!");
-            } else {
-                res.json(result);
-            }
-        });
+    if (req.query.title_like !== undefined) {
+        db_connect
+            .collection("articles")
+            .find({ "status": "Accepted", title: new RegExp(req.query.title_like, 'i') })
+            .toArray(function (err, result) {
+                if (err) {
+                    res.status(400).send("Error fetching listings!");
+                } else {
+                    res.json(result);
+                }
+            });
+    } else {
+        db_connect
+            .collection("articles")
+            .find({ "status": "Accepted", })
+            .toArray(function (err, result) {
+                if (err) {
+                    res.status(400).send("Error fetching listings!");
+                } else {
+                    res.json(result);
+                }
+            });
+    }
 });
 
 // This section will help you get a single accepted article by id
