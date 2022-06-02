@@ -13,6 +13,7 @@ const dbo = require("../config/db");
 
 // This section will help you get a list of all the accpeted analysiss.
 analysisRoutes.route("/analysis").get(function (req, res) {
+    let db_connect = dbo.getDb("speed");
     if (req.query.title_like !== undefined) {
         db_connect
             .collection("articles")
