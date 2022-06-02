@@ -12,7 +12,7 @@ const dbo = require("../config/db");
 // const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the accpeted moderations.
-moderationRoutes.route("/moderation").get(function (req, res) {
+moderationRoutes.route("/api/moderation").get(function (req, res) {
     let db_connect = dbo.getDb("speed");
     if (req.query.title_like !== undefined) {
         db_connect
@@ -51,7 +51,7 @@ moderationRoutes.route("/moderation").get(function (req, res) {
 });
 
 // This section will help you get a single moderation article by id
-moderationRoutes.route("/moderation/:id").get(function (req, res) {
+moderationRoutes.route("/api/moderation/:id").get(function (req, res) {
     let db_connect = dbo.getDb();
     let myquery = { id: req.params.id };
     db_connect
@@ -66,7 +66,7 @@ moderationRoutes.route("/moderation/:id").get(function (req, res) {
 });
 
 // This section will help you update a moderation article by id.
-moderationRoutes.route("/moderation/:id").patch(function (req, response) {
+moderationRoutes.route("/api/moderation/:id").patch(function (req, response) {
     let db_connect = dbo.getDb();
     let myquery = { id: req.params.id };
     let newvalues = {

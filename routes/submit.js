@@ -12,7 +12,7 @@ const dbo = require("../config/db");
 // const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you create a new article.
-SubmitRoutes.route("/submit").post(function (req, response) {
+SubmitRoutes.route("/api/submit").post(function (req, response) {
     let db_connect = dbo.getDb("speed");
     let myobj = {
         id: Date.now().toString(),

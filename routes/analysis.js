@@ -12,7 +12,7 @@ const dbo = require("../config/db");
 // const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the accpeted analysiss.
-analysisRoutes.route("/analysis").get(function (req, res) {
+analysisRoutes.route("/api/analysis").get(function (req, res) {
     let db_connect = dbo.getDb("speed");
     if (req.query.title_like !== undefined) {
         db_connect
@@ -51,7 +51,7 @@ analysisRoutes.route("/analysis").get(function (req, res) {
 });
 
 // This section will help you get a single analysis article by id
-analysisRoutes.route("/analysis/:id").get(function (req, res) {
+analysisRoutes.route("/api/analysis/:id").get(function (req, res) {
     let db_connect = dbo.getDb();
     let myquery = { id: req.params.id };
     db_connect
@@ -66,7 +66,7 @@ analysisRoutes.route("/analysis/:id").get(function (req, res) {
 });
 
 // This section will help you update a analysis article by id.
-analysisRoutes.route("/analysis/:id").patch(function (req, response) {
+analysisRoutes.route("/api/analysis/:id").patch(function (req, response) {
     let db_connect = dbo.getDb();
     let myquery = { id: req.params.id };
     let newvalues = {

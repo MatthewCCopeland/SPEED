@@ -12,7 +12,7 @@ const dbo = require("../config/db");
 // const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the accpeted rejecteds.
-rejectedRoutes.route("/rejected").get(function (req, res) {
+rejectedRoutes.route("/api/rejected").get(function (req, res) {
     let db_connect = dbo.getDb("speed");
     if (req.query.title_like !== undefined) {
         db_connect
@@ -51,7 +51,7 @@ rejectedRoutes.route("/rejected").get(function (req, res) {
 });
 
 // This section will help you get a single rejected article by id
-rejectedRoutes.route("/rejected/:id").get(function (req, res) {
+rejectedRoutes.route("/api/rejected/:id").get(function (req, res) {
     let db_connect = dbo.getDb();
     let myquery = { id: req.params.id };
     db_connect
