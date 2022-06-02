@@ -14,7 +14,7 @@ import { AnalysisList, AnalysisShow, AnalysisEdit } from "pages/analysis";
 const App: React.FC = () => {
   return (
     <Refine
-      dataProvider={dataProvider("")}
+      dataProvider={dataProvider("https://speed-develop.herokuapp.com")}
       routerProvider={routerProvider}
       resources={[
         {
