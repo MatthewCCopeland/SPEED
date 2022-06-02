@@ -14,7 +14,7 @@ import { AnalysisList, AnalysisShow, AnalysisEdit } from "pages/analysis";
 const App: React.FC = () => {
   return (
     <Refine
-      dataProvider={dataProvider("http://localhost:5000")}
+      dataProvider={dataProvider("")}
       routerProvider={routerProvider}
       resources={[
         {
