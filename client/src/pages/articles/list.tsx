@@ -114,6 +114,19 @@ export const AdminList: React.FC = () => {
             onChange={(event) => setFilter("title", event.target.value)}
           />
         </div>
+        <div>
+          <label className="mr-1" htmlFor="title">
+            Practice:
+          </label>
+          <input
+            id="practice"
+            type="text"
+            className="rounded border border-gray-200 p-1 text-gray-700"
+            placeholder="Filter by practice"
+            value={filters.find((filter: { practice: string; }) => filter.practice === "practice")?.value}
+            onChange={(event) => setFilter("practice", event.target.value)}
+          />
+        </div>
         <button
           className="flex items-center justify-between gap-1 rounded border border-gray-200 bg-indigo-500 p-2 text-xs font-medium leading-tight text-white transition duration-150 ease-in-out hover:bg-indigo-600"
           onClick={() => create("articles")}
